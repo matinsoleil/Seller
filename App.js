@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Font, AppLoading } from 'expo';
+import { AppLoading } from 'expo';
 import { Provider } from 'react-redux';
-
+import * as Font from 'expo-font';
 import configureStore from './configureStore';
 import { Tag } from './Component/Label/Tag';
 import { createStackNavigator, createAppContainer, StackActions, NavigationActions } from "react-navigation";
 import { HomeScreen } from './Screen/HomeScreen';
 import { AboutScreen } from './Screen/AboutScreen';
+import { AdminScreen } from './Screen/AdminScreen';
+import { LoginScreen } from './Screen/LoginScreen';
 
 const store = configureStore();
 
@@ -21,6 +23,12 @@ class App extends Component {
     console.log('HELP');
     //this.setState({appReady: true});
   };
+
+  componentDidMount() {
+    Font.loadAsync({
+      'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+    });
+   }
 
   render() {
     const { appReady } = this.state;
@@ -42,8 +50,15 @@ const AppNavigator = createStackNavigator({
   },
   About: {
     screen: AboutScreen      
+  },
+  Admin: {
+    screen: AdminScreen
+  },
+  Login: {
+    screen: LoginScreen
   }
 });
+
 
 export default createAppContainer(AppNavigator);
 
