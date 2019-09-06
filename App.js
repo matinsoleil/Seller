@@ -27,9 +27,12 @@ class App extends Component {
   componentDidMount() {
     Font.loadAsync({
       'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+      'open-sans-extra-bold': require('./assets/fonts/OpenSans-ExtraBold.ttf'),
+      'open-sans-light': require('./assets/fonts/OpenSans-Light.ttf'),
+      'open-sans-regular': require('./assets/fonts/OpenSans-Regular.ttf'),
     });
    }
-
+   
   render() {
     const { appReady } = this.state;
     return !appReady ? (
