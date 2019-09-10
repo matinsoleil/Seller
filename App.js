@@ -8,8 +8,9 @@ import { Tag } from './Component/Label/Tag';
 import { createStackNavigator, createAppContainer, StackActions, NavigationActions } from "react-navigation";
 import { HomeScreen } from './Screen/HomeScreen';
 import { AboutScreen } from './Screen/AboutScreen';
-import { AdminScreen } from './Screen/AdminScreen';
+import { ListScreen } from './Screen/ListScreen';
 import { LoginScreen } from './Screen/LoginScreen';
+import { RegisterScreen } from './Screen/RegisterScreen';
 
 const store = configureStore();
 
@@ -54,12 +55,16 @@ const AppNavigator = createStackNavigator({
   About: {
     screen: AboutScreen      
   },
-  Admin: {
-    screen: AdminScreen
+  Register: {
+    screen: RegisterScreen
   },
   Login: {
     screen: LoginScreen
+  },
+  List: {
+    screen: ListScreen
   }
+  
 });
 
 

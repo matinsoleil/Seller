@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Button } from "react-native";
 import { createStackNavigator, createAppContainer, StackActions, NavigationActions } from "react-navigation";
 import { AboutScreen } from "./AboutScreen";
-import { AdminScreen } from "./AdminScreen";
+import { RegisterScreen } from "./RegisterScreen";
 import { LoginScreen } from "./LoginScreen";
 
 export class HomeScreen extends React.Component {
@@ -14,23 +14,23 @@ export class HomeScreen extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Button
-          title="GOING TO"
+          title="ABOUT"
           color="orange"
-  accessibilityLabel="Tap to Decrypt Data"
+  accessibilityLabel="About"
            onPress={() => navigate('About')}
         ></Button>
 
 <Button
-          title="ADMIN"
+          title="REGISTER"
           color="orange"
-  accessibilityLabel="Tap to Decrypt Data"
-           onPress={() => navigate('Admin')}
+  accessibilityLabel="To Register"
+           onPress={() => navigate('Register')}
         ></Button>
 
 <Button
           title="LOGIN"
           color="orange"
-  accessibilityLabel="Tap to Decrypt Data"
+  accessibilityLabel="To Login"
            onPress={() => navigate('Login')}
         ></Button>       
 
@@ -48,8 +48,8 @@ const AppNavigator = createStackNavigator({
   About: {
     screen: AboutScreen      
   },
-  Admin: {
-    screen: AdminScreen      
+  Register: {
+    screen: RegisterScreen      
   },
   Login: {
     screen: LoginScreen      
