@@ -6,6 +6,7 @@ import * as Font from 'expo-font';
 import configureStore from './configureStore';
 import HomeScreen from './Screen/HomeScreen';
 
+import Navigator from './Navigator';
 
 const store = configureStore();
 
@@ -18,6 +19,7 @@ export default class App extends Component {
   loading = () => {
     console.log('HELP');
     //this.setState({appReady: true});
+
   };
 
   componentDidMount() {
@@ -35,13 +37,14 @@ export default class App extends Component {
       <AppLoading startAsync={this.loading} onFinish={() => this.setState({ appReady: true })} />
     ) : (
       <Provider store={store}  >
-      
-         <HomeScreen  />
+  
+         <Navigator />
      
       </Provider>
     );
   }
 }
+
 
 
 
