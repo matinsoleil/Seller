@@ -4,17 +4,12 @@ import { AppLoading } from 'expo';
 import { Provider } from 'react-redux';
 import * as Font from 'expo-font';
 import configureStore from './configureStore';
-import { Tag } from './Component/Label/Tag';
-import { createStackNavigator, createAppContainer, StackActions, NavigationActions } from "react-navigation";
-import { HomeScreen } from './Screen/HomeScreen';
-import { AboutScreen } from './Screen/AboutScreen';
-import { ListScreen } from './Screen/ListScreen';
-import { LoginScreen } from './Screen/LoginScreen';
-import { RegisterScreen } from './Screen/RegisterScreen';
+import HomeScreen from './Screen/HomeScreen';
+
 
 const store = configureStore();
 
-class App extends Component {
+export default class App extends Component {
   state = {
     appReady: false,
   };
@@ -40,35 +35,15 @@ class App extends Component {
       <AppLoading startAsync={this.loading} onFinish={() => this.setState({ appReady: true })} />
     ) : (
       <Provider store={store}  >
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }} >
-         <HomeScreen />
-      </View>
+      
+         <HomeScreen  />
+     
       </Provider>
     );
   }
 }
 
-const AppNavigator = createStackNavigator({
-  Home: {
-    screen: HomeScreen
-  },
-  About: {
-    screen: AboutScreen      
-  },
-  Register: {
-    screen: RegisterScreen
-  },
-  Login: {
-    screen: LoginScreen
-  },
-  List: {
-    screen: ListScreen
-  }
-  
-});
 
-
-export default createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
   container: {

@@ -1,59 +1,57 @@
 import React from "react";
 import { View, Text, Button } from "react-native";
-import { createStackNavigator, createAppContainer, StackActions, NavigationActions } from "react-navigation";
-import { AboutScreen } from "./AboutScreen";
-import { RegisterScreen } from "./RegisterScreen";
-import { LoginScreen } from "./LoginScreen";
 
-export class HomeScreen extends React.Component {
+import { connect } from 'react-redux';
+import { getCounter } from '../axion/selectors/counter';
+import { incrementCounter } from '../axion/actions/counter';
+
+class HomeScreen extends React.Component {
   constructor(props) {
 		super(props);
-	}
+  }
+  
+  Send = (data) => {
+
+    console.log(data);
+
+    this.props.incrementCounter('hello');
+
+}
+
+
   render() {
-    const { navigate } = this.props.navigation; 
+    console.log(this.props);
+  
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Button
-          title="ABOUT"
-          color="orange"
-  accessibilityLabel="About"
-           onPress={() => navigate('About')}
-        ></Button>
-
-<Button
-          title="REGISTER"
-          color="orange"
-  accessibilityLabel="To Register"
-           onPress={() => navigate('Register')}
-        ></Button>
-
-<Button
-          title="LOGIN"
-          color="orange"
-  accessibilityLabel="To Login"
-           onPress={() => navigate('Login')}
-        ></Button>       
-
-  <Text>Home Screen AB</Text>
+      
+      <Button title="ENVIAR" onPress={() => this.Send('Simple Button pressed')} />  
+ 
+  <Text>Home Screen AB :{this.props.counter}</Text>
       </View>
     );
   }
 }
 
 
-const AppNavigator = createStackNavigator({
-  Home: {
-    screen: HomeScreen
-  },
-  About: {
-    screen: AboutScreen      
-  },
-  Register: {
-    screen: RegisterScreen      
-  },
-  Login: {
-    screen: LoginScreen      
-  }
-});
 
-export default createAppContainer(AppNavigator);
+
+const mapStateToProps = (state) => {
+  return {
+    counter:getCounter(state)
+ }
+};
+
+
+const mapDispatchToProps = dispatch => {
+  
+  return {
+    incrementCounter: (message) => {
+        dispatch(incrementCounter(message))
+    }
+
+}
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(HomeScreen);
