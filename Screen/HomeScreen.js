@@ -21,10 +21,17 @@ class HomeScreen extends React.Component {
 
   render() {
     console.log(this.props);
+
+    const {navigate} = this.props.navigation;
   
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      
+
+
+      <Button
+        title="Config"
+        onPress={() => navigate('ConfigScreen', {name: 'Jane'})}
+      />
       <Button title="ENVIAR" onPress={() => this.Send('Simple Button pressed')} />  
  
   <Text>Home Screen AB :{this.props.counter}</Text>
