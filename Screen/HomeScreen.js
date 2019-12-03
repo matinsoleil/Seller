@@ -10,6 +10,7 @@ class HomeScreen extends React.Component {
 		super(props);
   }
   
+  
   Send = (data) => {
 
     console.log(data);
@@ -17,7 +18,6 @@ class HomeScreen extends React.Component {
     this.props.incrementCounter('hello');
 
 }
-
 
   render() {
     console.log(this.props);
@@ -27,7 +27,10 @@ class HomeScreen extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
 
-
+      <Button
+        title="Register"
+        onPress={() => navigate('RegisterScreen', {name: 'Jane'})}
+      />
       <Button
         title="Config"
         onPress={() => navigate('ConfigScreen', {name: 'Jane'})}
