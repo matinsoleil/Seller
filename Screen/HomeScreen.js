@@ -15,7 +15,7 @@ class HomeScreen extends React.Component {
 
     console.log(data);
 
-    this.props.incrementCounter('hello');
+    this.props.incrementCounter('hello world');
 
 }
 
